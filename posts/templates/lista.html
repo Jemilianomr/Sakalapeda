@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{%block content%}
+	<h2>Enlistamos todos los posts</h2>
+
+		{%for post in posts%}
+		<a href="{{post.get_absolute_url}}">
+			<h3>{{post.titulo}}</h3>
+		</a>
+			<p>{{post.cuerpo | truncatewords:30}}</p>
+			<span>{{post.fecha}}</span>
+		{%empty%}
+		<h1>No hay posts morro U_U</h1>
+		{%endfor%}
+
+
+{%endblock content%}
