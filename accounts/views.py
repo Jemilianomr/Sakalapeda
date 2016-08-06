@@ -6,9 +6,11 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import RegistrationForm
 
+from .models import Perfil
 
 
-class Perfil(View):
+
+class PerfilView(View):
 	@method_decorator(login_required)
 	def get(self,request):
 		template_name = 'accounts/perfil.html'
@@ -30,6 +32,10 @@ class Alta(View):
 			new_user = form.save(commit=False)
 			new_user.set_password(form.cleaned_data['password'])
 			new_user.save()
+			#aqui le voy a asignar un perfil al usuario
+			perfil_nuevo = Perfil()
+			perfil_nuevo.user = new_user
+			perfil_nuevo.save()
 			return redirect('perfil')
 		else:
 			context = {

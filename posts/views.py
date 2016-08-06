@@ -5,6 +5,9 @@ from .forms import PostForm
 
 from django.utils.text import slugify
 
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+
 
 
 class ListView(View):
@@ -26,6 +29,7 @@ class DetailView(View):
 		return render(request,template_name,context)
 
 class UpdateView(View):
+	@method_decorator(login_required)
 	def get(self,request):
 		template_name = 'nuevo.html'
 		form = PostForm()
