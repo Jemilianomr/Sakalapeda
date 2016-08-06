@@ -4,5 +4,12 @@
 
 <h1>Bienvenido a tu perfil! sabes que es sabado pero bueno.</h1>
 
+{%if request.user.is_authenticated%}
+	<h3>Hola, {{request.user.first_name}} {{request.user.last_name}}</h3>
+	<h4>Ya sabes que tu correo electronico es: {{request.user.email}}</h4>
+{%else%}
+<h2>Porque no inicias sesion?</h2>
+{%endif%}
+
 
 {%endblock content%}
