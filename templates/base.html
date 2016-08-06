@@ -27,6 +27,7 @@
 		<h5>Blog de los mostros de bolsillo</h5>
 		<a href="{%url 'lista'%}">Blog</a>
 		{%if request.user.is_authenticated%}
+		<a href="{%url 'nuevo'%}">Publica algo!</a>
 		<a href="{%url 'perfil'%}">Tu perfil</a>
 		<a href="{%url 'logout'%}">Cerrar Sesión</a>
 		{%else%}
