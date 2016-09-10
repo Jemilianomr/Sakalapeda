@@ -16,7 +16,7 @@ class ListView(View):
 		categoria = None
 		if cat:
 			categoria = Categoria.objects.get(nombre=cat)
-			posts = categoria.posts.all()
+			posts = categoria.categorias.all()
 		else:	
 			posts = Post.objects.all().order_by('titulo')
 		compa = {

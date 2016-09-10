@@ -8,9 +8,9 @@
 	{%csrf_token%}
 	{{form.as_p}}
 	<input type="hidden" name="next" value="{{next}}"/>
-	<input type="submit" value="Iniciar Sesión">
+	<input class="btn blue" type="submit" value="Iniciar Sesión">
 </form>
-<p>Si aun no tienes una cuenta, creala <a href="{%url 'alta'%}">Aquí</a></p>
+<p align="center"><a class="btn gray" href="{%url 'alta'%}">Crear Cuenta</a></p>
 {%endif%}
 
 

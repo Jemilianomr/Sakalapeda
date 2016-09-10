@@ -3,13 +3,23 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 
+class Categoria(models.Model):
+	nombre = models.CharField(max_length=140)
+
+	def __str__(self):
+		return self.nombre
+
+
 class Post(models.Model):
 	titulo = models.CharField(max_length=140)
-	fecha = models.DateTimeField(auto_now=True)
+	organizador = models.CharField(max_length=140,blank=True,null=True)
+	fecha = models.CharField(max_length=140,blank=True,null=True)
+	lugar = models.CharField(max_length=140,blank=True,null=True)
 	cuerpo = models.TextField()
 	publicado = models.BooleanField(default=False)
 	slug = models.SlugField(max_length=500,blank=True,null=True) #esto es un slug
-	imagen=models.ImageField(upload_to='files',blank=True,null=True)
+	imagen = models.ImageField(upload_to='files',blank=True,null=True)
+	categoria = models.ManyToManyField(Categoria, related_name='categorias')
 	def __str__(self):
 		return self.titulo
 
@@ -25,13 +35,6 @@ class Comentario(models.Model):
 
 	def __str__(self):
 		return 'Este comentario lo hizo {} en el post {}'.format(self.user,self.post)
-
-class Categoria(models.Model):
-	nombre = models.CharField(max_length=140)
-	posts = models.ManyToManyField(Post, related_name='categorias')
-
-	def __str__(self):
-		return self.nombre
 
 
 

@@ -5,28 +5,41 @@
 {%if categoria%}
 	<h2>Posts que coinciden con la categoria {{categoria.nombre}}</h2>
 {%else%}	
-	<h2>Enlistamos todos los posts</h2>
+	<h2>Reuniones disponibles</h2>
 {%endif%}	
 
-		{%for post in posts%}
-		<a href="{{post.get_absolute_url}}">
-			<h3>{{post.titulo}}</h3>
-		</a>
-		<img src='{{post.imagen.url}}'>
-		<ul>
-			{%for cat in post.categorias.all%}
+ <div class="row">
+
+<div class="row col m8">
+{%for post in posts%}
+ 
+        <div class="col s4">
+          <div class="card hoverable">
+            <div class="card-image">
+            
+              <img src="{{post.imagen.url}}">
+              <span class="card-title">{{post.titulo}}</span>
+            </div>
+            <div class="card-content">
+              {%for cat in post.categoria.all%}
 			<a href="{%url 'categoria' cat.nombre%}">
 			<li>{{cat.nombre}}</li>
 		    </a>
 			{%empty%}
 			<p>No hay categoria</p>
 			{%endfor%}
-		</ul>
-			<p>{{post.cuerpo | truncatewords:30}}</p>
-			<span>{{post.fecha}}</span>
-		{%empty%}
-		<h1>No hay posts morro U_U</h1>
-		{%endfor%}
+            </div>
+            <div class="card-action">
+              <a href="{{post.get_absolute_url}}"><h7>{{post.titulo}}</h7></a>
+            </div>
+          </div>
+        </div>
+ 
+{%endfor%}
+</div>
+
+</div>
+
 
 
 {%endblock content%}
