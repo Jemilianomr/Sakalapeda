@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comentario, Categoria
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -9,4 +9,7 @@ class PostAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug':('titulo',)}
 
 admin.site.register(Post, PostAdmin)
+
+admin.site.register(Comentario)
+admin.site.register(Categoria)
 
