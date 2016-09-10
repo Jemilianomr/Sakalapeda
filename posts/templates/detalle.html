@@ -5,7 +5,7 @@
 <p>{{post.cuerpo}}</p>
 <ul>
 	{%for coment in coments%}
-	<li><i class="material-icons">contacts</i><span>{{coment.user}}</span></li>
+	<li><i class="material-icons">contacts</i><span>{{coment.user}}</span> ==> {{coment.cuerpo}} ==> {{coment.fecha}}</li>
 	{%empty%}
 	<p>Aun no se han hecho comentarios t(*_*)t</p>
 	{%endfor%}
