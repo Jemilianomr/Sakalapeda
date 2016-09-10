@@ -11,10 +11,12 @@
 	{%endfor%}
 </ul>
 
+{%if request.user.is_authenticated%}
 <form action="." method="post">
 {%csrf_token%}
 {{form.as_p}}
-<input type="submit" value="Comentar">
+<input class="btn blue" type="submit" value="Comentar">
+{%endif%}
 
 </form>
 

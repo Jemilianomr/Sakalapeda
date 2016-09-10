@@ -1,6 +1,7 @@
 <html>
 <head>
-	<title>Poké-Blog</title>
+	<title>SacaLaPeda.com</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 	<style>
 		html, body{
 			margin: 0;
@@ -23,22 +24,37 @@
 	</style>
 </head>
 <body>
-	<nav class="nav">
-		<h5>Blog de los mostros de bolsillo</h5>
-		<a href="{%url 'lista'%}">Blog</a>
-		{%if request.user.is_authenticated%}
-		<a href="{%url 'nuevo'%}">Publica algo!</a>
-		<a href="{%url 'perfil'%}">Tu perfil</a>
-		<a href="{%url 'logout'%}">Cerrar Sesión</a>
-		{%else%}
-		<a href="{%url 'login'%}">Iniciar Sesión</a>
-		{%endif%}
 
-	</nav>
+<nav class="red darken-4">
+    <div class="nav-wrapper">
+      <a href="{%url 'lista'%}" class="brand-logo">Saka La Peda</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      	{%if request.user.is_authenticated%}
+      	<li><a href="{%url 'lista'%}">Eventos</a></li>
+        <li><a href="{%url 'nuevo'%}">Crea un evento</a></li>
+        <li><a href="{%url 'perfil'%}">Tu Perfil</a></li>
+        <li><a href="{%url 'logout'%}">Cerrar sesion</a></li>
+        {%else%}
+		<li><a href="{%url 'login'%}">Iniciar sesion</a></li>  
+		{%endif%}    
+      </ul>
+    </div>
+  </nav>
+       
+       <div class="container">
 
 	{% block content %}
 	{% endblock content %}
 
+	</div> 
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	 <script type="text/javascript">$(document).ready(function() {
+    $('select').material_select();
+  });
+            </script>
+
 </body>
 </html>
-
