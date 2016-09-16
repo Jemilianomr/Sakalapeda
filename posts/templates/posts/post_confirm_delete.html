@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<form method="post">
+
+    {%csrf_token%}
+
+    <h2>¿Estás seguro que deseas borrar el evento{{object}}?</h2>
+
+    <input class="btn green" type="submit" value="Si, seguro">
+
+</form>
+
+    <a class="btn red" href="{%url 'lista'%}">Cancelar</a>
+
+
+{%endblock content%}
