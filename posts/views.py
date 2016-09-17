@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from .models import Post, Categoria
 from .forms import PostForm, CommForm
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.text import slugify
 
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-
+from django.core.urlresolvers import reverse_lazy ##Nos crea un link, se usa para evitar errores a la hora de crear links
 
 
 class ListView(View):
@@ -18,7 +18,7 @@ class ListView(View):
 			categoria = Categoria.objects.get(nombre=cat)
 			posts = categoria.categorias.all()
 		else:	
-			posts = Post.objects.all().order_by('titulo')
+			posts = Post.objects.all().order_by('fecha')
 		compa = {
 			'posts':posts,
 			'categoria':categoria,
@@ -64,13 +64,11 @@ class UpdateView(View):
 		new_post.save()
 		return redirect('lista')
 
+class PostUpdate(UpdateView):
+	model = Post
+	success_url = reverse_lazy('lista')
+	fields = ['titulo','organizador','fecha','lugar','cuerpo','imagen','categoria']
 
-
-
-
-
-
-
-
-
-
+class PostDelete(DeleteView):
+	model = Post
+	success_url = reverse_lazy('lista')

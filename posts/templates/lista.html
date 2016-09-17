@@ -3,10 +3,10 @@
 {%block content%}
 
 {%if categoria%}
-	<h2>Posts que coinciden con la categoria {{categoria.nombre}}</h2>
-{%else%}	
-	<h2>Reuniones disponibles</h2>
-{%endif%}	
+  <h2>Posts que coinciden con la categoria {{categoria.nombre}}</h2>
+{%else%}  
+  <h2>Reuniones disponibles</h2>
+{%endif%} 
 
  <div class="row">
 
@@ -14,7 +14,7 @@
 {%for post in posts%}
  
         <div class="col s4">
-          <div style="height:400px; overflow:scroll" class="card hoverable">
+          <div style="height:450px; overflow:scroll" class="card hoverable">
             <div class="card-image">
             
               <img src="{{post.imagen.url}}" width="200" height="250">
@@ -22,12 +22,11 @@
             </div>
             <div class="card-content">
               {%for cat in post.categoria.all%}
-			<a href="{%url 'categoria' cat.nombre%}">
-			<li>{{cat.nombre}}</li>
-		    </a>
-			{%empty%}
-			<p>No hay categoria</p>
-			{%endfor%}
+                  <a href="{%url 'categoria' cat.nombre%}">
+                  <li>{{cat.nombre}}</li></a>
+                  {%empty%}
+                  <p>No hay categoria</p>
+              {%endfor%}
             </div>
             <div class="card-action">
               <a href="{{post.get_absolute_url}}"><h7>Ver Evento</h7></a>
@@ -39,7 +38,6 @@
 </div>
 
 </div>
-
 
 
 {%endblock content%}
