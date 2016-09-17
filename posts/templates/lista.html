@@ -22,12 +22,11 @@
             </div>
             <div class="card-content">
               {%for cat in post.categoria.all%}
-      <a href="{%url 'categoria' cat.nombre%}">
-      <li>{{cat.nombre}}</li>
-        </a>
-      {%empty%}
-      <p>No hay categoria</p>
-      {%endfor%}
+                  <a href="{%url 'categoria' cat.nombre%}">
+                  <li>{{cat.nombre}}</li></a>
+                  {%empty%}
+                  <p>No hay categoria</p>
+              {%endfor%}
             </div>
             <div class="card-action">
               <a href="{{post.get_absolute_url}}"><h7>Ver Evento</h7></a>

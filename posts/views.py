@@ -18,7 +18,7 @@ class ListView(View):
 			categoria = Categoria.objects.get(nombre=cat)
 			posts = categoria.categorias.all()
 		else:	
-			posts = Post.objects.all().order_by('-fecha')
+			posts = Post.objects.all().order_by('fecha')
 		compa = {
 			'posts':posts,
 			'categoria':categoria,
@@ -67,7 +67,7 @@ class UpdateView(View):
 class PostUpdate(UpdateView):
 	model = Post
 	success_url = reverse_lazy('lista')
-	fields = ['issue','status','foto']
+	fields = ['titulo','organizador','fecha','lugar','cuerpo','imagen','categoria']
 
 class PostDelete(DeleteView):
 	model = Post
