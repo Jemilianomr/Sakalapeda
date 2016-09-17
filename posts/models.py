@@ -36,6 +36,12 @@ class Comentario(models.Model):
 	def __str__(self):
 		return 'Este comentario lo hizo {} en el post {}'.format(self.user,self.post)
 
+class Asistencia(models.Model):
+	user = models.ForeignKey(User, related_name='Asisttencias')	
+
+	def __str__(self):
+			return 'Asistira(n) {}'.format(self.user)	
+
 
 
 
