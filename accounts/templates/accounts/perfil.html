@@ -2,11 +2,10 @@
 
 {%block content%}
 
-<h1>Bienvenido ¿listo para hacer amigos?</h1>
+<h1>Hola, {{request.user.first_name}} {{request.user.last_name}}</h1>
 
 {%if request.user.is_authenticated%}
-	<h3>Hola, {{request.user.first_name}} {{request.user.last_name}}</h3>
-	<h4>Ya sabes que tu correo electronico es: {{request.user.email}}</h4>
+	<h5>Correo electrónico: {{request.user.email}}</h5>
 
 	<p>Bio: {{request.user.perfil.bio}}</p>
 	<p>Ocupacion: {{request.user.perfil.ocupacion}}</p>

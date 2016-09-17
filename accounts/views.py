@@ -43,6 +43,3 @@ class Alta(View):
 			}
 			template_name = 'accounts/alta.html'
 			return render(request,template_name,context)
-
-
-
