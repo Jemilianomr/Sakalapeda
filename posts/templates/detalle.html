@@ -17,15 +17,13 @@
 	Se el primero en decir que asistirá
 	<p><input class="btn black" type="submit" value="Asistiré"></p>
 	{%endfor%}
+
+	</br>
 	{%endif%}
 	{%for coment in coments%}
-<<<<<<< HEAD
-	<li><i class="material-icons">contacts</i><span>{{coment.user}}</span><p>{{coment.cuerpo}} ==> {{coment.fecha}}</li></p>
-=======
 	<li><h5>{{coment.user}}</h5>
 	<p>{{coment.cuerpo}}</p>
 	<h6>{{coment.fecha}}</h6></li>
->>>>>>> 2fd3f0035a222dbee9e66f90b40e770bdea21adb
 	{%empty%}
 	{%if request.user.is_authenticated%}
 	<p>Se el primero en dar tu opinión sobre el evento</p>
